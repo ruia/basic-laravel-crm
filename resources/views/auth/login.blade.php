@@ -11,22 +11,33 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h3 class="text-center font-weight-light my-2">Basic Laravel CRM :: Login</h3></div>
                             <div class="card-body">
-                                <form action="" mehtod="post">
+                                <form method="post" action="{{ route('login') }}" >
+                                    @csrf
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" required autofocus />
+                                        <input class="form-control @error('email') is-invalid @enderror" id="inputEmail" name="email" type="email" placeholder="name@example.com" required autofocus />
                                         <label for="inputEmail">Email address</label>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputPassword" type="password" placeholder="Password" required />
+                                        <input class="form-control @error('password') is-invalid @enderror" id="inputPassword" name="password" type="password" placeholder="Password" required />
                                         <label for="inputPassword">Password</label>
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                        <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
+                                        <input class="form-check-input" id="inputRememberPassword" name="remember" type="checkbox" value="" {{ old('remember') ? 'checked' : '' }} />
+                                        <label class="form-check-label" for="inputRememberPassword">{{ __('Remember Me') }}</label>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                        <a class="small" href="password.html">Forgot Password?</a>
-                                        <button type="submit" class="btn btn-primary" href="index.html">Login</button>
+                                        <a class="small" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                                        <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
                                     </div>
                                 </form>
                             </div>
