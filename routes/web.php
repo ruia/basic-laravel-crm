@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('layouts.app');
     })->name('index');
+    Route::resource('users', UserController::class);
 });
 
 
