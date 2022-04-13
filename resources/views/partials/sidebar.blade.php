@@ -50,11 +50,13 @@
                         </div>
                     </nav>
                 </div> --}}
+                @can('view_system_tables')
                 <div class="sb-sidenav-menu-heading">{{ __('System') }}</div>
                 <a class="nav-link" href="">
                     <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                     {{ __('Users') }}
                 </a>
+                @endcan
             </div>
         </div>
         <div class="sb-sidenav-footer">
