@@ -20,25 +20,27 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Role(s)</th>
+                            <th>Permission(s)</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    {{-- <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </tfoot> --}}
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>
+                                    @foreach ($user->getRoleNames() as $role)
+                                        <span class="badge bg-primary">{{ $role }}</span>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($user->getAllPermissions() as $permission)
+                                        <span class="badge bg-primary">{{ $permission->name }}</span>
+                                    @endforeach
+                                </td>
                                 <td>&nbsp;</td>
                             </tr>
                         @endforeach
