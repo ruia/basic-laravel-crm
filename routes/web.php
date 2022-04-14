@@ -22,8 +22,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('layouts.app');
     })->name('index');
-    Route::resource('users', UserController::class);
-    Route::resource('vats', VatController::class);
+
+    Route::middleware(['can:view_system_tables'])->group(function () {
+        Route::resource('users', UserController::class);
+        Route::resource('vats', VatController::class);
+    });
 });
 
 
