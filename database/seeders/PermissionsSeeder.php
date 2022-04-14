@@ -20,6 +20,9 @@ class PermissionsSeeder extends Seeder
         $permission = Permission::create([
             'name' => 'view_system_tables',
         ]);
+        $customersPermission = Permission::create([
+            'name' => 'customers.*',
+        ]);
 
         $adminRole = Role::create([
             'name' => 'Administrator',
@@ -29,5 +32,8 @@ class PermissionsSeeder extends Seeder
         ]);
 
         $adminRole->givePermissionTo($permission);
+        $adminRole->givePermissionTo($customersPermission);
+
+        $role->givePermissionTo($customersPermission);
     }
 }
