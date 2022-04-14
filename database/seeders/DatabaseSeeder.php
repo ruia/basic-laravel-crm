@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         return $this->call([
             PermissionsSeeder::class,
             UserSeeder::class,
+            VatSeeder::class,
         ]);
     }
 }

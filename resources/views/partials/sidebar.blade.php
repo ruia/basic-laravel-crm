@@ -52,6 +52,12 @@
                 </div> --}}
                 @can('view_system_tables')
                 <div class="sb-sidenav-menu-heading">{{ __('System') }}</div>
+                
+                <a class="nav-link" href="{{ route('vats.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-percent"></i></div>
+                    {{ __('VATs') }}
+                </a>
+
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                     {{ __('Users') }}
