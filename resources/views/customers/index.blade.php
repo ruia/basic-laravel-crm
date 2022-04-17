@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') | {{ __('Customers') }} @endsection
 @section('content')
 <main>
     <div class="container-fluid px-4">
@@ -10,8 +10,11 @@
         </ol>
 
         <div class="card mb-4">
-            <div class="card-header">
-                <i class="fas fa-users"></i>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                  <i class="fas fa-user-alt"></i>
+                </div>
+                <a href="{{ route('customers.create') }}" class="btn btn-sm btn-secondary">{{ __('Add Customer') }}</a>
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">

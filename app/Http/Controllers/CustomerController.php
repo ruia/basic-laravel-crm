@@ -24,7 +24,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     /**
@@ -35,7 +35,20 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'address' => 'nullable|max:255',
+            'postal_code' => 'nullable|max:255',
+            'city' => 'nullable|max:255',
+            'vat_number' => 'nullable|unique:customers|max:255',
+            'cellphone' => 'nullable|unique:customers|max:255',
+            'email' => 'nullable|unique:customers|max:255',
+            'other_contact' => 'nullable|max:255',
+            'observations' => 'nullable',
+        ]);
+
+        $customer = Customer::create($validated);
+        return redirect('customers');
     }
 
     /**
