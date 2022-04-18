@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('cellphone')->nullable()->unique();
             $table->string('email')->nullable()->unique();
             $table->string('other_contact')->nullable();
-            $table->string('observations')->nullable();
+            $table->text('observations')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
