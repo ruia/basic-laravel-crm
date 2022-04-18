@@ -59,7 +59,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('customers.show', ['customer' => $customer]);
     }
 
     /**
@@ -70,7 +70,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('customers.edit', ['customer' => $customer]);
     }
 
     /**
@@ -82,7 +82,33 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        // TODO: if there is other records disable some updates?'
+        // TODO: Create a table that tracks the changes to the users?
+        
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'address' => 'nullable|max:255',
+            'postal_code' => 'nullable|max:255',
+            'city' => 'nullable|max:255',
+            'vat_number' => 'nullable|max:255|unique:customers,vat_number,' . $customer->id,
+            'cellphone' => 'nullable|max:255|unique:customers,cellphone,' . $customer->id,
+            'email' => 'nullable|max:255|unique:customers,email,' . $customer->id,
+            'other_contact' => 'nullable|max:255',
+            'observations' => 'nullable',
+        ]);
+
+        $customer->name = request('name');
+        $customer->address = request('address');
+        $customer->postal_code = request('postal_code');
+        $customer->city = request('city');
+        $customer->vat_number = request('vat_number');
+        $customer->cellphone = request('cellphone');
+        $customer->email = request('email');
+        $customer->other_contact = request('other_contact');
+        $customer->observations = request('observations');
+        $customer->save(); 
+
+        return redirect('customers');
     }
 
     /**

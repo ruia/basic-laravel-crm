@@ -36,7 +36,7 @@
                                 <td>{{ $customer->vat_number }}</td>
                                 <td>{{ $customer->cellphone }}</td>
                                 <td>{{ $customer->email }}</td>
-                                <td>&nbsp;</td>
+                                <td><a href="{{ route('customers.show', $customer->id) }}">{{ __('View') }}</a> |  <a href="{{ route('customers.edit', $customer->id) }}">{{ __('Edit') }}</a></td> 
                             </tr>
                         @endforeach
                     </tbody>
