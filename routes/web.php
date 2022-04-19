@@ -21,9 +21,7 @@ Auth::routes(['register' => false]);
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('layouts.app');
-    })->name('index');
+    Route::get('/', view('layouts.app'))->name('index');
 
     Route::middleware(['can:view_system_tables'])->group(function () {
         Route::resource('users', UserController::class);
