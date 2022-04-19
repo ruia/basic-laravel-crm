@@ -1,0 +1,28 @@
+// 
+// Styles
+// 
+
+// Import Custom Variables
+@import "./sb-admin/variables.scss";
+
+// // Import Bootstrap
+// @import "~bootstrap/scss/bootstrap.scss";
+
+// Import Custom SCSS
+@import "./sb-admin/global.scss";
+
+// Layout
+@import "./sb-admin/layout/authentication.scss";
+@import "./sb-admin/layout/dashboard-default.scss";
+@import "./sb-admin/layout/dashboard-fixed.scss";
+@import "./sb-admin/layout/error.scss";
+
+// Navigation
+@import "./sb-admin/navigation/nav.scss";
+@import "./sb-admin/navigation/topnav.scss";
+@import "./sb-admin/navigation/sidenav/sidenav.scss";
+@import "./sb-admin/navigation/sidenav/sidenav-dark.scss";
+@import "./sb-admin/navigation/sidenav/sidenav-light.scss";
+
+// Plugins
+// @import "./sb-admin/plugins/simple-datatables.scss";
