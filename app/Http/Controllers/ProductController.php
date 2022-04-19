@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Datatables;
+
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,14 +18,20 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            // return Product::with('vat:id,name,tax_percent')->paginate(15)->toJson();
-            return DB::table('products')
+            $tableData = DB::table('products')
                 ->join('vats', 'products.vat_id', '=', 'vats.id')
-                ->selectRaw('products.id, products.ref, products.name, products.bar_code, vats.tax_percent, products.price_without_vat, products.price_without_vat * (vats.tax_percent/100 + 1) as price_with_vat')
+                ->selectRaw('products.id, products.ref, products.name, products.bar_code, CONCAT(vats.tax_percent, \'%\') as vat, CONCAT(ROUND(products.price_without_vat, 2), \'€\') as price_without_vat, CONCAT(ROUND(products.price_without_vat * (vats.tax_percent/100 + 1),2), \'€\') as price_with_vat')
                 ->get();
-        }
 
-        // $products = Product::with('vat:id,name,tax_percent')->get();
+            return Datatables::of($tableData)
+                ->addColumn('action', function($tableData){
+                    $btn = '<a href="' . route('products.show', $tableData->id) . '">View</a> | ';
+                    $btn = $btn.'<a href="' . route('products.edit', $tableData->id) . '">Edit</a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
         return view ('products.index');        
     }
 
