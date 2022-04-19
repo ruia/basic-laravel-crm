@@ -23,6 +23,9 @@ class PermissionsSeeder extends Seeder
         $customersPermission = Permission::create([
             'name' => 'customers.*',
         ]);
+        $productPermission = Permission::create([
+            'name' => 'products.*',
+        ]);
 
         $adminRole = Role::create([
             'name' => 'Administrator',
@@ -33,7 +36,9 @@ class PermissionsSeeder extends Seeder
 
         $adminRole->givePermissionTo($permission);
         $adminRole->givePermissionTo($customersPermission);
+        $adminRole->givePermissionTo($productPermission);
 
         $role->givePermissionTo($customersPermission);
+        $role->givePermissionTo($productPermission);
     }
 }
