@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -15,11 +16,15 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            return Product::with('vat:id,name,tax_percent')->paginate(15)->toJson();
+            // return Product::with('vat:id,name,tax_percent')->paginate(15)->toJson();
+            return DB::table('products')
+                ->join('vats', 'products.vat_id', '=', 'vats.id')
+                ->selectRaw('products.id, products.ref, products.name, products.bar_code, vats.tax_percent, products.price_without_vat, products.price_without_vat * (vats.tax_percent/100 + 1) as price_with_vat')
+                ->get();
         }
 
         // $products = Product::with('vat:id,name,tax_percent')->get();
-        return view ('products.index');
+        return view ('products.index');        
     }
 
     /**
