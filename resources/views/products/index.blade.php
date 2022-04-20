@@ -1,9 +1,13 @@
 @extends('layouts.app')
+
 @section('title') | {{ __('Poducts Livewiree') }} @endsection
+
 @section('css')
-@livewireStyles
+    @livewireStyles
 @endsection
+
 @section('content')
+
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Products Livewire</h1>
@@ -24,7 +28,9 @@
         </div>
     </div>
 </main>
+
 @section('js')
-@livewireScripts
+    @livewireScripts
 @endsection
+
 @endsection
