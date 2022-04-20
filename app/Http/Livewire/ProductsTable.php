@@ -16,7 +16,7 @@ class ProductsTable extends Component
     public $sortField = 'id';
     public $sortAsc = true;
     public $sortClass = '';
-    public $search = '1';
+    public $search = '';
 
     public function sortBy($field)
     {
@@ -36,6 +36,9 @@ class ProductsTable extends Component
                 ->join('vats', 'products.vat_id', '=', 'vats.id')
                 ->selectRaw('products.id, products.ref, products.name, products.bar_code, vats.tax_percent as vat,products.price_without_vat as price_without_vat,products.price_without_vat * (vats.tax_percent/100 + 1) as price_with_vat')
                 // ->search($this->search)
+                ->where('ref', 'like', '%'.$this->search.'%')
+                ->orwhere('products.name', 'like', '%'.$this->search.'%')
+                ->orwhere('products.bar_code', 'like', '%'.$this->search.'%')
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage);
 

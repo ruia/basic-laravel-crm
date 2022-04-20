@@ -4,11 +4,11 @@
             <div class="dataTable-dropdown">
                 <label>
                     <select wire:model="perPage" class="dataTable-selector">
-                        <option value="5">5</option>
                         <option value="10" selected="">10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>
                         <option value="25">25</option>
+                        <option value="50">50</option>
                     </select> 
                     entries per page
                 </label>
@@ -26,34 +26,41 @@
                         <th class="{{ $sortField !== 'name' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('name')" class="dataTable-sorter" href="#">Name</a></th>
                         <th class="{{ $sortField !== 'bar_code' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('bar_code')" class="dataTable-sorter" href="#">EAN</a></th>
                         <th class="{{ $sortField !== 'vat' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('vat')" class="dataTable-sorter" href="#">VAT</a></th>
-                        <th class="{{ $sortField !== 'price_without_vat' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('price_without_vat')" class="dataTable-sorter" href="#">price_without_vat</a></th>
-                        <th class="{{ $sortField !== 'price_with_vat' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('price_with_vat')" class="dataTable-sorter" href="#">price_with_vat</a></th>
+                        <th class="{{ $sortField !== 'price_without_vat' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('price_without_vat')" class="dataTable-sorter" href="#">Price Without VAT</a></th>
+                        <th class="{{ $sortField !== 'price_with_vat' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('price_with_vat')" class="dataTable-sorter" href="#">Price With VAT</a></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
-                       <tr>
-                           <td>{{ $product->id }}</td>
-                           <td>{{ $product->ref }}</td>
-                           <td>{{ $product->name }}</td>
-                           <td>{{ $product->bar_code }}</td>
-                           <td>{{ $product->vat }}</td>
-                           <td>{{ $product->price_without_vat }}</td>
-                           <td>{{ $product->price_with_vat }}</td>
-                           <td>&nbsp;</td>
-                       </tr>
-                    @endforeach
+                    @if($products->count() > 0)
+                        @foreach ($products as $product)
+                            <tr>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->ref }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->bar_code }}</td>
+                                <td>{{ $product->vat }}%</td>
+                                <td>{{ formatMoney($product->price_without_vat) }}€</td>
+                                <td>{{ formatMoney($product->price_with_vat) }}€</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="8" style="text-align:center;"><strong> No products found! </strong></td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
-        <div class="dataTable-bottom">
-            <div class="dataTable-info">
-                Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }} entries
+        @if($products->count() > 0)
+            <div class="dataTable-bottom">
+                <div class="dataTable-info">
+                    Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }} entries
+                </div>
+
+                {{ $products->links('livewire.pagination-links') }}
             </div>
-            <nav class="dataTable-pagination">
-                {{-- <ul class="dataTable-pagination-list"></ul> --}}
-                {{ $products->links() }}
-            </nav>
-        </div>
+        @endif
     </div>
 </div>
