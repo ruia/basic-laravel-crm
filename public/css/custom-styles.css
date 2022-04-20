@@ -1,0 +1,9 @@
+.action-column {
+    text-align: center;
+}
+
+.action-column-link {
+    color:#363b3d;
+    display: inline-block; 
+    padding: 0 3px;
+}
