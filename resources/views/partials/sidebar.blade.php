@@ -7,6 +7,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                     {{ __('Customers') }}
                 </a>
+                <a class="nav-link" href=" {{ route('products.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-boxes-stacked"></i></div>
+                    {{ __('Products') }}
+                </a>
                 {{-- 
                 <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
