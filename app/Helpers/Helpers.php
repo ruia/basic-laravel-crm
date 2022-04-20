@@ -9,3 +9,10 @@ if (! function_exists('dateTimeToLocal')) {
         return Carbon::parse($date)->setTimezone('Europe/Lisbon')->toDateTimeString();
     }
 }
+
+if (! function_exists('formatMoney')) {
+    function formatMoney($value)
+    {
+        return number_format($value, 2, ",");          
+    }
+}
