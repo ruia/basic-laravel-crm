@@ -42,7 +42,7 @@
                                 <td>{{ $product->vat }}%</td>
                                 <td>{{ formatMoney($product->price_without_vat) }}€</td>
                                 <td>{{ formatMoney($product->price_with_vat) }}€</td>
-                                <td>&nbsp;</td>
+                                <td class="action-column"><a href="{{ route('products.show', $product->id) }}" class="action-column-link"><i class="fa-solid fa-magnifying-glass"></i></a><a href="{{ route('products.edit', $product->id) }}" class="action-column-link"><i class="fa-solid fa-pencil"></i></a></td>
                             </tr>
                         @endforeach
                     @else
