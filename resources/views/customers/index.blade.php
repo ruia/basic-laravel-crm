@@ -1,6 +1,13 @@
 @extends('layouts.app')
+
 @section('title') | {{ __('Customers') }} @endsection
+
+@section('css')
+    @livewireStyles
+@endsection
+
 @section('content')
+
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Customers</h1>
@@ -17,46 +24,14 @@
                 <a href="{{ route('customers.create') }}" class="btn btn-sm btn-secondary">{{ __('Add Customer') }}</a>
             </div>
             <div class="card-body">
-                <table id="datatablesSimple">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>VAT Number</th>
-                            <th>Cellphone</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($customers as $customer)
-                            <tr>
-                                <td>{{ $customer->id }}</td>
-                                <td>{{ $customer->name }}</td>
-                                <td>{{ $customer->vat_number }}</td>
-                                <td>{{ $customer->cellphone }}</td>
-                                <td>{{ $customer->email }}</td>
-                                <td><a href="{{ route('customers.show', $customer->id) }}">{{ __('View') }}</a> |  <a href="{{ route('customers.edit', $customer->id) }}">{{ __('Edit') }}</a></td> 
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <livewire:customers-table />
             </div>
         </div>
     </div>
 </main>
 
 @section('js')
-<script>
-    window.addEventListener('DOMContentLoaded', event => {
-        // Simple-DataTables
-        // https://github.com/fiduswriter/Simple-DataTables/wiki
-
-        const datatablesSimple = document.getElementById('datatablesSimple');
-        if (datatablesSimple) {
-            new simpleDatatables.DataTable(datatablesSimple);
-        }
-    });
-</script>
+    @livewireScripts
 @endsection
+
 @endsection
