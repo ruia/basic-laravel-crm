@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VatController;
 use App\Http\Controllers\UserController;
@@ -19,7 +20,6 @@ use App\Http\Controllers\CustomerController;
 
 Auth::routes(['register' => false]);
 
-
 Route::middleware(['auth'])->group(function () {
     Route::view('/', 'layouts.app')->name('index');
 
@@ -27,11 +27,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('vats', VatController::class);
     });
-   
+
     Route::resource('customers', CustomerController::class)->middleware(['can:customers']);
-    Route::resource('products', ProductController::class)->middleware(['can:products']);    
+    Route::resource('products', ProductController::class)->middleware(['can:products']);
 });
-
-
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
