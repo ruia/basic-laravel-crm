@@ -24,7 +24,7 @@
                         <th class="{{ $sortField !== 'id' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('id')" class="dataTable-sorter" href="#">#</a></th>
                         <th class="{{ $sortField !== 'ref' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('ref')" class="dataTable-sorter" href="#">Ref</a></th>
                         <th class="{{ $sortField !== 'name' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('name')" class="dataTable-sorter" href="#">Name</a></th>
-                        <th class="{{ $sortField !== 'bar_code' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('bar_code')" class="dataTable-sorter" href="#">EAN</a></th>
+                        <th class="{{ $sortField !== 'bar_code' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('bar_code')" class="dataTable-sorter" href="#">Bar Code</a></th>
                         <th class="{{ $sortField !== 'vat' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('vat')" class="dataTable-sorter" href="#">VAT</a></th>
                         <th class="{{ $sortField !== 'price_without_vat' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('price_without_vat')" class="dataTable-sorter" href="#">Price Without VAT</a></th>
                         <th class="{{ $sortField !== 'price_with_vat' ? '' : $sortClass }}"><a wire:click.prevent="sortBy('price_with_vat')" class="dataTable-sorter" href="#">Price With VAT</a></th>

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Datatables;
-
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,22 +15,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
-            $tableData = DB::table('products')
-                ->join('vats', 'products.vat_id', '=', 'vats.id')
-                ->selectRaw('products.id, products.ref, products.name, products.bar_code, CONCAT(vats.tax_percent, \'%\') as vat, CONCAT(ROUND(products.price_without_vat, 2), \'€\') as price_without_vat, CONCAT(ROUND(products.price_without_vat * (vats.tax_percent/100 + 1),2), \'€\') as price_with_vat')
-                ->get();
-
-            return Datatables::of($tableData)
-                ->addColumn('action', function($tableData){
-                    $btn = '<a href="' . route('products.show', $tableData->id) . '">View</a> | ';
-                    $btn = $btn.'<a href="' . route('products.edit', $tableData->id) . '">Edit</a>';
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-        return view ('products.index');        
+        return view('products.index');        
     }
 
     /**
@@ -42,7 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('products.create');
     }
 
     /**
@@ -53,7 +37,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'ref' => 'required|unique:products|max:255',
+            'name' => 'required|max:255',
+            'bar_code' => 'nullable|unique:products|max:255',
+            'price_without_vat' => 'nullable|numeric|min:0|max:999999.999',
+            'vat_id' => 'required|numeric|min:1'
+        ]);
+
+        Product::create($validated);
     }
 
     /**
