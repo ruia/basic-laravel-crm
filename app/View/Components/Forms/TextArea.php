@@ -12,14 +12,14 @@ class TextArea extends Component
     public $model;
     public $rows;
     public $showAlert;
-    Public $readOnly;
+    Public $args;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $type, $label, $model = null, $rows = 3, $showAlert = true, $readOnly = '')
+    public function __construct($name, $type, $label, $model = null, $rows = 3, $showAlert = true, $args = '')
     {
         $this->name = $name;
         $this->type = $type;
@@ -27,10 +27,7 @@ class TextArea extends Component
         $this->model = $model;
         $this->rows = $rows;
         $this->showAlert = $showAlert;
-        if ($readOnly) {
-            $readOnly = 'readonly';
-        }
-        $this->readOnly = $readOnly;
+        $this->args = $args;
     }
 
     /**

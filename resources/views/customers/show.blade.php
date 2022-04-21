@@ -33,23 +33,23 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-9">
-                                                <x-forms.input name="name" type="text" label="Name" :model="$customer" read-only="true" />
+                                                <x-forms.input name="name" type="text" label="Name" :model="$customer" args="readonly" />
                                             </div>
                                             <div class="col-md-3">
-                                                <x-forms.input name="vat_number" type="text" label="VAT" :model="$customer" read-only="true" />
+                                                <x-forms.input name="vat_number" type="text" label="VAT" :model="$customer" args="readonly" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <x-forms.input name="address" type="text" label="Address" :model="$customer" read-only="true" />
+                                                <x-forms.input name="address" type="text" label="Address" :model="$customer" args="readonly" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <x-forms.input name="postal_code" type="text" label="Postal Code" :model="$customer" read-only="true" />
+                                                <x-forms.input name="postal_code" type="text" label="Postal Code" :model="$customer" args="readonly" />
                                             </div>
                                             <div class="col-md-8">
-                                                <x-forms.input name="city" type="text" label="City" :model="$customer" read-only="true" />
+                                                <x-forms.input name="city" type="text" label="City" :model="$customer" args="readonly" />
                                             </div>
                                         </div>
                                     </div>
@@ -59,16 +59,16 @@
                                 <div class="card mb-4">
                                     <div class="card-header">{{ __('Contacts') }}</div>
                                     <div class="card-body">
-                                        <x-forms.input name="cellphone" type="text" label="Cellphone" :model="$customer" read-only="true" />
-                                        <x-forms.input name="email" type="text" label="Email" :model="$customer" read-only="true" />
-                                        <x-forms.input name="other_contact" type="text" label="Other Contact" :model="$customer" read-only="true" />
+                                        <x-forms.input name="cellphone" type="text" label="Cellphone" :model="$customer" args="readonly" />
+                                        <x-forms.input name="email" type="text" label="Email" :model="$customer" args="readonly" />
+                                        <x-forms.input name="other_contact" type="text" label="Other Contact" :model="$customer" args="readonly" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-9">
-                                <x-forms.text-area name="observations" type="text" label="Observations" :model="$customer" read-only="true" />
+                                <x-forms.text-area name="observations" type="text" label="Observations" :model="$customer" args="readonly" />
                             </div>
                             <div class="col-md-3">
                                 <dl class="row">

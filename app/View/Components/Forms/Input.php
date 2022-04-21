@@ -11,24 +11,21 @@ class Input extends Component
     public $label;
     public $model;
     public $showAlert;
-    Public $readOnly;
+    Public $args;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $type, $label, $model = null, $showAlert = true, $readOnly = '')
+    public function __construct($name, $type, $label, $model = null, $showAlert = true, $args = '')
     {
         $this->name = $name;
         $this->type = $type;
         $this->label = $label;
         $this->model = $model;
         $this->showAlert = $showAlert;
-        if ($readOnly) {
-            $readOnly = 'readonly';
-        }
-        $this->readOnly = $readOnly;
+        $this->args = $args;
     }
 
     /**

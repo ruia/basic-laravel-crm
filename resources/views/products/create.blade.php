@@ -21,8 +21,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <x-forms.input name="ref" type="text" label="Ref" />
-                                    <x-forms.input name="name" type="text" label="Name" />
+                                    <x-forms.input name="ref" type="text" label="Ref" args="required autofocus" />
+                                    <x-forms.input name="name" type="text" label="Name" args="required" />
                                     <x-forms.input name="bar_code" type="text" label="Bar Code" />
                                     <x-forms.input name="price_without_vat" type="text" label="Price Without Vat" />
                                     <x-forms.input name="ref" type="text" label="Ref" />
