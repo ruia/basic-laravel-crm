@@ -30,41 +30,26 @@
                             <div class="col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">{{ __('Info') }}</div>
-                                    <div class="card-body">data
+                                    <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-9">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="inputName">{{ __('Name') }}</label>
-                                                    <input class="form-control" id="inputName" name="name" type="text" value="{{ $customer->name }}" readonly />
-                                                </div>
+                                                <x-forms.input name="name" type="text" label="Name" :model="$customer" read-only="true" />
                                             </div>
                                             <div class="col-md-3">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="inputVAT">{{ __('VAT') }}</label>
-                                                    <input class="form-control" id="inputVAT" name="vat_number" type="text" value="{{ $customer->vat }}" readonly />
-                                                </div>
+                                                <x-forms.input name="vat_number" type="text" label="VAT" :model="$customer" read-only="true" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="inputAddress">{{ __('Address') }}</label>
-                                                    <input class="form-control" id="inputAddress" name="address" type="text" value="{{ $customer->address }}" readonly />
-                                                </div>
+                                                <x-forms.input name="address" type="text" label="Address" :model="$customer" read-only="true" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="inputPostalCode">{{ __('Postal Code') }}</label>
-                                                    <input class="form-control" id="inputPostalCode" name="postal_code" type="text" value="{{ $customer->postal_code }}" readonly />
-                                                </div>
+                                                <x-forms.input name="postal_code" type="text" label="Postal Code" :model="$customer" read-only="true" />
                                             </div>
                                             <div class="col-md-8">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="inputCity">{{ __('City') }}</label>
-                                                    <input class="form-control" id="inputCity" name="city" type="text"value="{{ $customer->city }}" readonly />
-                                                </div>
+                                                <x-forms.input name="city" type="text" label="City" :model="$customer" read-only="true" />
                                             </div>
                                         </div>
                                     </div>
@@ -74,28 +59,16 @@
                                 <div class="card mb-4">
                                     <div class="card-header">{{ __('Contacts') }}</div>
                                     <div class="card-body">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="inputCellphone">{{ __('Cellphone') }}</label>
-                                            <input class="form-control" id="inputName" name="cellphone" type="text" value="{{ $customer->cellphone }}" readonly />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="inputEmail">{{ __('Email') }}</label>
-                                            <input class="form-control" id="inputName" name="email" type="email" value="{{ $customer->email }}" readonly />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="inputOtherContact">{{ __('Other Contact') }}</label>
-                                            <input class="form-control" id="inputOtherContact" name="other_contact" type="text" value="{{ $customer->other_contact }}" readonly />
-                                        </div>
+                                        <x-forms.input name="cellphone" type="text" label="Cellphone" :model="$customer" read-only="true" />
+                                        <x-forms.input name="email" type="text" label="Email" :model="$customer" read-only="true" />
+                                        <x-forms.input name="other_contact" type="text" label="Other Contact" :model="$customer" read-only="true" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-9">
-                                <div class="mb-3">
-                                    <label class="form-label" for="inputObervations">{{ __('Observations') }}</label>
-                                    <textarea class="form-control" id="inputObervations" name="observations" rows="3" readonly>{{ $customer->observations }}</textarea>
-                                </div>
+                                <x-forms.text-area name="observations" type="text" label="Observations" :model="$customer" read-only="true" />
                             </div>
                             <div class="col-md-3">
                                 <dl class="row">
