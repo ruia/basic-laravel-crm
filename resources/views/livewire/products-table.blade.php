@@ -32,24 +32,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if($products->count() > 0)
-                        @foreach ($products as $product)
-                            <tr>
-                                <td>{{ $product->id }}</td>
-                                <td>{{ $product->ref }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->bar_code }}</td>
-                                <td>{{ $product->vat }}%</td>
-                                <td>{{ formatMoney($product->price_without_vat) }}€</td>
-                                <td>{{ formatMoney($product->price_with_vat) }}€</td>
-                                <td class="action-column"><a href="{{ route('products.show', $product->id) }}" class="action-column-link"><i class="fa-solid fa-magnifying-glass"></i></a><a href="{{ route('products.edit', $product->id) }}" class="action-column-link"><i class="fa-solid fa-pencil"></i></a></td>
-                            </tr>
-                        @endforeach
-                    @else
+                    @forelse ($products as $product)
+                        <tr>
+                            <td>{{ $product->id }}</td>
+                            <td>{{ $product->ref }}</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->bar_code }}</td>
+                            <td>{{ $product->vat }}%</td>
+                            <td>{{ formatMoney($product->price_without_vat) }}€</td>
+                            <td>{{ formatMoney($product->price_with_vat) }}€</td>
+                            <td class="action-column"><a href="{{ route('products.show', $product->id) }}" class="action-column-link"><i class="fa-solid fa-magnifying-glass"></i></a><a href="{{ route('products.edit', $product->id) }}" class="action-column-link"><i class="fa-solid fa-pencil"></i></a></td>
+                        </tr>
+                    @empty
                         <tr>
                             <td colspan="8" style="text-align:center;"><strong> No products found! </strong></td>
                         </tr>
-                    @endif
+                    @endforelse
                 </tbody>
             </table>
         </div>

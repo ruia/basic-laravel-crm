@@ -30,22 +30,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if($customers->count() > 0)
-                        @foreach ($customers as $customer)
-                            <tr>
-                                <td>{{ $customer->id }}</td>
-                                <td>{{ $customer->name }}</td>
-                                <td>{{ $customer->vat_number }}</td>
-                                <td>{{ $customer->cellphone }}</td>
-                                <td>{{ $customer->email }}</td>
-                                <td class="action-column"><a href="{{ route('customers.show', $customer->id) }}" class="action-column-link"><i class="fa-solid fa-magnifying-glass"></i></a><a href="{{ route('customers.edit', $customer->id) }}" class="action-column-link"><i class="fa-solid fa-pencil"></i></a></td>
-                            </tr>
-                        @endforeach
-                    @else
+                    @forelse ($customers as $customer)
+                        <tr>
+                            <td>{{ $customer->id }}</td>
+                            <td>{{ $customer->name }}</td>
+                            <td>{{ $customer->vat_number }}</td>
+                            <td>{{ $customer->cellphone }}</td>
+                            <td>{{ $customer->email }}</td>
+                            <td class="action-column"><a href="{{ route('customers.show', $customer->id) }}" class="action-column-link"><i class="fa-solid fa-magnifying-glass"></i></a><a href="{{ route('customers.edit', $customer->id) }}" class="action-column-link"><i class="fa-solid fa-pencil"></i></a></td>
+                        </tr>
+                    @empty
                         <tr>
                             <td colspan="8" style="text-align:center;"><strong> No customers found! </strong></td>
                         </tr>
-                    @endif
+                    @endforelse
                 </tbody>
             </table>
         </div>

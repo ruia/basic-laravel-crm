@@ -97,17 +97,7 @@ class CustomerController extends Controller
             'observations' => 'nullable',
         ]);
 
-        $customer->name = request('name');
-        $customer->address = request('address');
-        $customer->postal_code = request('postal_code');
-        $customer->city = request('city');
-        $customer->vat_number = request('vat_number');
-        $customer->cellphone = request('cellphone');
-        $customer->email = request('email');
-        $customer->other_contact = request('other_contact');
-        $customer->observations = request('observations');
-        $customer->save(); 
-
+        $customer->update($validated);
         return redirect('customers');
     }
 
