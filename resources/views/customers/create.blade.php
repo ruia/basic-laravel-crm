@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-9">
-                                    <x-forms.input name="name" type="text" label="Name" />
+                                    <x-forms.input name="name" type="text" label="Name" args="required autofocus" />
                                 </div>
                                 <div class="col-md-3">
                                     <x-forms.input name="vat_number" type="text" label="VAT" />
