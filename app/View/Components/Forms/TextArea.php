@@ -12,7 +12,7 @@ class TextArea extends Component
     public $model;
     public $rows;
     public $showAlert;
-    Public $args;
+    public $args;
 
     /**
      * Create a new component instance.

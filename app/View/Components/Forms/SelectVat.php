@@ -2,22 +2,29 @@
 
 namespace App\View\Components\Forms;
 
+use App\Models\Vat;
 use Illuminate\View\Component;
 
 class SelectVat extends Component
 {
     public $name;
     public $label;
+    public $showAlert;
+    public $args;
+    public $vats;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $label)
+    public function __construct($name, $label, $showAlert = true, $args = '')
     {
         $this->name = $name;
         $this->label = $label;
+        $this->showAlert = $showAlert;
+        $this->args = $args;
+        $this->vats = Vat::all(); //TODO: Later change this to a view composer??
     }
 
     /**

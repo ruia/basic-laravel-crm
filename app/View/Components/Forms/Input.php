@@ -11,7 +11,7 @@ class Input extends Component
     public $label;
     public $model;
     public $showAlert;
-    Public $args;
+    public $args;
 
     /**
      * Create a new component instance.
