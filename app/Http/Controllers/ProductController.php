@@ -44,8 +44,9 @@ class ProductController extends Controller
             'price_without_vat' => 'nullable|numeric|min:0|max:999999.999',
             'vat_id' => 'required|numeric|min:1'
         ]);
-
+        
         Product::create($validated);
+        return redirect('products');
     }
 
     /**

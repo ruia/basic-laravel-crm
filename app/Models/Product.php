@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'ref',
+        'name',
+        'bar_code',
+        'price_without_vat',
+    ];
     
     public function vat()
     {
