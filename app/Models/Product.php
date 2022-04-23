@@ -14,6 +14,7 @@ class Product extends Model
         'name',
         'bar_code',
         'price_without_vat',
+        'vat_id',
     ];
     
     public function vat()
