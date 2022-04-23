@@ -19,7 +19,7 @@ class SelectVat extends Component
      *
      * @return void
      */
-    public function __construct($name, $label, $showAlert = true, $args = '', $productVatId)
+    public function __construct($name, $label, $showAlert = true, $args = '', $productVatId = 0)
     {
         $this->name = $name;
         $this->label = $label;
