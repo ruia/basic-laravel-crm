@@ -11,6 +11,7 @@ class SelectVat extends Component
     public $label;
     public $showAlert;
     public $args;
+    public $productVatId;
     public $vats;
 
     /**
@@ -18,12 +19,13 @@ class SelectVat extends Component
      *
      * @return void
      */
-    public function __construct($name, $label, $showAlert = true, $args = '')
+    public function __construct($name, $label, $showAlert = true, $args = '', $productVatId)
     {
         $this->name = $name;
         $this->label = $label;
         $this->showAlert = $showAlert;
         $this->args = $args;
+        $this->productVatId = $productVatId;
         $this->vats = Vat::all(); //TODO: Later change this to a view composer??
     }
 

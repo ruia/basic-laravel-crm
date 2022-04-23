@@ -26,7 +26,7 @@
                                     <x-forms.input name="name" type="text" label="Name" :model="$product" args="required" />
                                     <x-forms.input name="bar_code" type="text" label="Bar Code" :model="$product" />
                                     <x-forms.input name="price_without_vat" type="text" :model="$product" label="Price Without Vat" />
-                                    <x-forms.select-vat name="vat_id" label="VAT" :model="$product" args="required" />
+                                    <x-forms.select-vat name="vat_id" label="VAT" :product-vat-id="$product->vat_id" args="required" />
                                 </div>
                             </div>
                         </div>

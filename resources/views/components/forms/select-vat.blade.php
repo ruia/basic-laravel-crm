@@ -2,7 +2,7 @@
     <label class="form-label" for="{{ $name }}">{{ __($label) }}</label>
     <select class="form-select" id="{{ $name }}" name="{{ $name }}" {{ $args }}>
         @foreach ($vats as $vat)
-            <option value="{{ $vat->id }}">{{ $vat->name }}
+            <option value="{{ $vat->id }}" {{ $vat->id == $productVatId ? 'selected' : '' }}>{{ $vat->name }}
         @endforeach
     </select>
     @if($showAlert)
