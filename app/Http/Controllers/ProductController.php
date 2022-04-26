@@ -80,17 +80,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'ref' => 'required|max:255|unique:products,ref,' . $product->id,
+            'name' => 'required|max:255',
+            'bar_code' => 'nullable|max:255|unique:products,bar_code,' . $product->id,
+            'price_without_vat' => 'nullable|numeric|min:0|max:999999.999',
+            'vat_id' => 'required|numeric|min:1'
+        ]);
+
+        $product->update($validated);
+        return redirect('products');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
-    {
-        //
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  \App\Models\Product  $product
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy(Product $product)
+    // {
+    //     //
+    // }
 }
