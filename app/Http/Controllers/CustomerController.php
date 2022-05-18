@@ -12,8 +12,12 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if(request()->ajax()) {
+            return response()->json(['customers' => Customer::all()]);
+        }
+
         return view('customers.index', ['customers' => Customer::all()]);
     }
 

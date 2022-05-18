@@ -28,7 +28,9 @@ class UserSeeder extends Seeder
             'password' => Hash::make('user')
         ]);
         $admin->assignRole('Administrator');
+        $admin->createToken('token');
         $user->assignRole('User');
+        $user->createToken('token');
 
     }
 }
